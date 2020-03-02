@@ -1,3 +1,63 @@
+@import "variables";
+
+html,
 body {
   margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 30px;
+}
+
+.calendar {
+  display: flex;
+  flex-wrap: wrap;
+  width: $width-calendar;
+
+  div {
+    position: relative;
+    box-sizing: border-box;
+    margin-right: 1px;
+    margin-bottom: 1px;
+    border: 1px solid black;
+    @include size;
+    background-color: #eee;
+    top: 0;
+    cursor: pointer;
+    transition: background-color 0.5s ease-in-out,
+      top 0.5s ease-in-out;
+  }
+
+  div::before {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include size;
+  }
+
+  div:hover {
+    top: -20px;
+    background-color: pink;
+  }
+
+  @for $i from 1 through 31 {
+    div:nth-child(#{$i})::before {
+      content: "#{$i}";
+    }
+  }
+
+}
+
+@each $name, $glyph in $week {
+  .calendar-#{$name} {
+    div:first-child {
+      margin-left: ($width + 1px) * $glyph;
+    }
+  }
+}
+
+@each $name, $glyph in $day {
+  .calendar-#{$name} {
+    div:nth-child(1n + #{$glyph}) {
+      display: none;
+    }
+  }
 }
