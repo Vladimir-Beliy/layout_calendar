@@ -10,7 +10,7 @@ body {
 .calendar {
   display: flex;
   flex-wrap: wrap;
-  width: $width-calendar;
+  width: 707px;
 
   div {
     position: relative;
@@ -18,7 +18,8 @@ body {
     margin-right: 1px;
     margin-bottom: 1px;
     border: 1px solid black;
-    @include size;
+    width: 100px;
+    height: 100px;
     background-color: #eee;
     top: 0;
     cursor: pointer;
@@ -30,7 +31,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    @include size;
+    width: 100px;
+    height: 100px;
   }
 
   div:hover {
